@@ -5,15 +5,22 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Productlist from './components/productlist'
 import Home from './pages/Home'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Notfound from './pages/Notfound'
+import Products from './pages/Products'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
     <Navbar/>
-    <Home/>
-    <Productlist/>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='*' element={<Notfound/>}/>
+      <Route path='/products' element={<Products/>}/>
+
+    </Routes>
+    </BrowserRouter>
     </>
   )
 }

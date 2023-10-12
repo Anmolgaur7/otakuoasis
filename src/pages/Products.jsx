@@ -1,30 +1,73 @@
 import React from 'react'
+import Productcard from '../components/Productcard'
 
 function Products() {
   return (
     <div>
-    <div className='mt-10'>
-    <h1 className='text-2xl font-semibold text-left'>New Arrivals</h1>
-    <p className='text-lg font-normal text-left'>Checkout our latest merchendise</p>
-    </div>    
-    <br />
-    <div>
+      <div className='mt-10'>
+        <h1 className='text-2xl font-semibold text-left'>New Arrivals</h1>
+        <p className='text-lg font-normal text-left'>Checkout our latest merchendise</p>
+      </div>
+      <br />
+      <div className='flex'>
         <div>
-         <div>
-          <h1 className='text-lg font-semibold'>Sort</h1>  
-          <input type="radio" />
-          <input type="radio" />
-          <input type="radio" />
-          <input type="radio" />
-
-         </div>
+          <div className='flex items-center flex-col'>
+            <h1 className='text-lg font-semibold m-4'>Sort</h1>
+            <div>
+              <div>
+                <input type="radio" name='sort' id='low' className=' mr-2' />
+                <label htmlFor="low">Price Low</label>
+              </div>
+              <div>
+                <input type="radio" name='sort' id='high' className=' mr-2' />
+                <label htmlFor="high">Price high</label>
+              </div>
+              <div>
+                <input type="radio" name='sort' id='bestselling' className=' mr-2' />
+                <label htmlFor="bestselling">Best selling</label>
+              </div>
+              <div>
+                <input type="radio" name='sort' id='featured' className=' mr-2' />
+                <label htmlFor="featured">Featured</label>
+              </div>
+            </div>
+          </div>
+          <div className='flex items-center flex-col'>
+            <h1 className='text-lg font-semibold m-4'>Category</h1>
+            <div>
+              <label htmlFor="arrivals"> NewArrivals</label>
+              <input type="checkbox" name="arrivals" id="arrivals" className='ml-2' />
+            </div>
+            <div>
+              <label htmlFor="tees">Tees</label>
+              <input type="checkbox" name="tees" id="tees"className='ml-2' />
+            </div>
+            <div>
+              <label htmlFor="Action">Action</label>
+              <input type="checkbox" name="Action" id="Action"className='ml-2' />
+            </div>
+            <div>
+              <label htmlFor="Posters">Posters</label>
+              <input type="checkbox" name="Posters" id="Posters" className='ml-2'/>
+            </div>
+            <div>
+              <label htmlFor="merchandise"className='ml-[px]'>Merchandise</label>
+              <input type="checkbox" name="merchandise" id="merchandise" className='' />
+            </div>
+          </div>
         </div>
         <div>
-        {/* components */}
+        <div className='flex justify-center items-center flex-wrap'>
+        <Productcard link={'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg'}/>
+        <Productcard link={'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'}/>
+        <Productcard link={'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg'}/>
+        <Productcard link={'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg'}/>
+        <Productcard link={'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg'}/>
         </div>
-    </div>
+        </div>
+      </div>
 
-    
+
     </div>
   )
 }

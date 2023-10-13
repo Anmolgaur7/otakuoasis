@@ -11,7 +11,7 @@ function Navbar() {
                 </div>
                 <ul className='flex'>
                     <li className='m-2 text-lg font-semibold text-black '>Home</li>
-                    <li className='m-2 text-lg font-semibold text-black '>About</li>
+                    <li className='m-2 text-lg font-semibold text-black '><a href="/products">Products</a></li>
                     <li className='m-2  text-lg font-semibold text-black'>Services</li>
                 </ul>
             </nav>

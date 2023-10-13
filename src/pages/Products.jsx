@@ -1,39 +1,40 @@
 import React from 'react'
 import Productcard from '../components/Productcard'
+import { Link } from 'react-router-dom'
 
 function Products() {
   const products=[
     {
      id:1,
      name:'Basic tee',
-     desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum doloribus amet mollitia totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
+     desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum dolorio, eius soluta, qui autem?',
      price:200,
-     imagesrc:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg'
+     link:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg'
     },
     {
-      id:1,
+      id:2,
       name:'Basic tee',
-      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum doloribus amet mollitia totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
+      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. to, eius soluta, qui autem?',
       price:200,
-      imagesrc:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
+      link:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
      },{
-      id:1,
+      id:3,
       name:'Basic tee',
-      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum doloribus amet mollitia totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
+      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officrupti laborum ab libero architecto, eius soluta, qui autem?',
       price:200,
-      imagesrc:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg'
+      link:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg'
      },{
-      id:1,
+      id:4,
       name:'Basic tee',
-      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum doloribus amet mollitia totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
+      desc:'Lorem ipsum dolor, sit amet consectetur adipisicingtam corrupti laborum ab libero architecto, eius soluta, qui autem?',
       price:200,
-      imagesrc:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg'
+      link:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg'
      },{
-      id:1,
+      id:5,
       name:'Basic tee',
-      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum doloribus amet mollitia totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
+      desc:'Lorem ipsum dolor, sit amet consectetur adipisa totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
       price:200,
-      imagesrc:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
+      link:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
      },]
   return (
     <div>
@@ -90,12 +91,16 @@ function Products() {
           </div>
         </div>
         <div>
-        <div className='flex justify-center items-center flex-wrap'>
-        <Productcard link={'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg'}/>
-        <Productcard link={'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'}/>
-        <Productcard link={'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg'}/>
-        <Productcard link={'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg'}/>
-        <Productcard link={'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg'}/>
+        <div className='flex ml-20 flex-wrap'>
+        {
+          products.map((product)=>{
+            return(
+            <Link to={`${product?.id}`}>
+            <Productcard link={product.link} name={product.name} desc={product.desc} price={product.price}/>
+            </Link>
+            )
+          })
+        }
         </div>
         </div>
       </div>

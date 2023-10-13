@@ -1,4 +1,5 @@
 import React from 'react'
+import Productlist from '../components/productlist'
 
 function Productdetails() {
     return (
@@ -85,6 +86,7 @@ function Productdetails() {
                     </div>
                 </div>
             </section>
+            <Productlist/>
         </>
     )
 }

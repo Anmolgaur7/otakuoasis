@@ -2,9 +2,42 @@ import React from 'react'
 import Productcard from '../components/Productcard'
 
 function Products() {
+  const products=[
+    {
+     id:1,
+     name:'Basic tee',
+     desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum doloribus amet mollitia totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
+     price:200,
+     imagesrc:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg'
+    },
+    {
+      id:1,
+      name:'Basic tee',
+      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum doloribus amet mollitia totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
+      price:200,
+      imagesrc:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
+     },{
+      id:1,
+      name:'Basic tee',
+      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum doloribus amet mollitia totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
+      price:200,
+      imagesrc:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg'
+     },{
+      id:1,
+      name:'Basic tee',
+      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum doloribus amet mollitia totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
+      price:200,
+      imagesrc:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg'
+     },{
+      id:1,
+      name:'Basic tee',
+      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum doloribus amet mollitia totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
+      price:200,
+      imagesrc:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
+     },]
   return (
     <div>
-      <div className='mt-10'>
+      <div className='mt-20 mb-12'>
         <h1 className='text-2xl font-semibold text-left'>New Arrivals</h1>
         <p className='text-lg font-normal text-left'>Checkout our latest merchendise</p>
       </div>

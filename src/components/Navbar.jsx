@@ -5,7 +5,7 @@ import Banner from '../components/Banner';
 function Navbar() {
     return (
         <>
-            <nav className="bg-slate-200 rounded-full  fixed top-2 z-40 left-0 w-screen select-none  flex justify-center items-center p-1">
+            <nav className="flex justify-center items-center h-[7vh] bg-amber-50">
                     <a href="/">
                     <img src={Logo} className='w-[8vw] rounded-full'/>
                     </a>

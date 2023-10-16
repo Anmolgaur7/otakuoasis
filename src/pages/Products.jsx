@@ -95,9 +95,7 @@ function Products() {
         {
           products.map((product)=>{
             return(
-            <Link to={`${product?.id}`}>
-            <Productcard link={product.link} name={product.name} desc={product.desc} price={product.price}/>
-            </Link>
+            <Productcard  id={product.id} link={product.link} name={product.name} desc={product.desc} price={product.price}/>
             )
           })
         }

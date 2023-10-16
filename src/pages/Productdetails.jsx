@@ -1,5 +1,5 @@
 import React from 'react'
-import Productlist from '../components/productlist'
+import Relatedproducts from '../components/Relatedproducts'
 
 function Productdetails() {
     return (
@@ -86,7 +86,7 @@ function Productdetails() {
                     </div>
                 </div>
             </section>
-            <Productlist/>
+            <Relatedproducts/>
         </>
     )
 }

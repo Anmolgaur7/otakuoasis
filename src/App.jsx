@@ -20,6 +20,7 @@ function App() {
       <Route path='*' element={<Notfound/>}/>
       <Route path='/products' element={<Products/>}/>
       <Route path='/products/:id' element={<Productdetails/>}/>
+      <Route path='/:id' element={<Productdetails/>}/>
     </Routes>
     </BrowserRouter>
     </>

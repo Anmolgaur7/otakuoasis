@@ -39,11 +39,11 @@ function Products() {
   return (
     <div>
       <div className='mt-20 mb-12'>
-        <h1 className='text-2xl font-semibold text-left'>New Arrivals</h1>
-        <p className='text-lg font-normal text-left'>Checkout our latest merchendise</p>
+        <h1 className='text-2xl font-semibold text-center'>New Arrivals</h1>
+        <p className='text-lg font-normal text-center'>Checkout our latest merchendise</p>
       </div>
       <br />
-      <div className='flex'>
+      <div className='flex justify-center items-center'>
         <div>
           <div className='flex items-center flex-col'>
             <h1 className='text-lg font-semibold m-4'>Sort</h1>

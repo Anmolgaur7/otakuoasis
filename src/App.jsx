@@ -11,20 +11,67 @@ import Products from './pages/Products'
 import Productdetails from './pages/Productdetails'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
+import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+
+
+const ROUTES=[
+  {
+   path:'/',
+   key:'ROOT',
+   element:<Home/>
+  },
+  {
+    path:'/login',
+    key:'LOGIN',
+    element:<Login/>
+   }, 
+    {
+    path:'/products',
+    key:'PRODUCTS',
+    element:<Products/>
+   }, 
+    {
+    path:'/products/:id',
+    key:'PRODUCTS/ID',
+    element:<Productdetails/>
+   },
+   {
+    path:'/checkout',
+    key:'CHECKOUT',
+    element:<Checkout/>
+   },
+   {
+    path:'/cart',
+    key:'CART',
+    element:<Cart/>
+   },
+   {
+    path:'/:id',
+    key:'ROOT/ID',
+    element:<Productdetails/>
+   },
+]
 
 function App() {
   return (
     <>
-    <Navbar/>
     <BrowserRouter>
     <Routes>
-      <Route path='/' element={<Home/>}/>
+      {
+        ROUTES.map(({path,key,element})=>{
+        return(
+          <Route path={path} element={
+            <>
+             <Navbar/>
+            {element}
+            </>
+          }/>
+        )
+        })
+      }
       <Route path='*' element={<Notfound/>}/>
-      <Route path='/products' element={<Products/>}/>
-      <Route path='/products/:id' element={<Productdetails/>}/>
-      <Route path='/cart' element={<Cart/>}/>
-      <Route path='/checkout' element={<Checkout/>}/>
-      <Route path='/:id' element={<Productdetails/>}/>
+      <Route path='/dashboard' element={<Dashboard/>}/>
     </Routes>
     </BrowserRouter>
     </>

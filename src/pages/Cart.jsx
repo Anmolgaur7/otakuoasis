@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-import Goku from "../images/goku.png";
+import Sanji from "../images/sanji.png";
 
 function Cart() {
     const navigate=useNavigate();
@@ -9,10 +9,11 @@ function Cart() {
         navigate('/checkout')
     }
     return (
-        <div className='bg-sky-200  flex    '>
-            <img src={Goku} alt="" className='w-[18rem]  ml-20 p-2' />
+        <div className='bg-cartbg bg-cover rounded-2xl  flex justify-center items-center '>
+
                     <div class="mx-auto  mt-8 max-w-md md:mt-12">
-                        <div class="rounded-3xl bg-white mb-8 shadow-lg">
+                        <div class="rounded-3xl bg-slate-100 mb-8 pt-5  shadow-lg">
+                            <h1 className=' text-center text-2xl font-semibold flex justify-center items-center'>Senpai's Cart <img src={Sanji} alt="" className='w-[5rem] h-[5rem]' /></h1>
                             <div class="px-4 py-6 sm:px-8 sm:py-10">
                                 <div class="flow-root">
                                     <ul class="-my-8">

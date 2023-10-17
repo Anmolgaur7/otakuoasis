@@ -4,6 +4,9 @@ export default {
   "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
     extend: {
+      backgroundImage: {
+        'cartbg': "url('./public/cartbg.jpg')",
+      },
       fontSize:{
         '10xl':'11rem',
         '11xl':'12rem'

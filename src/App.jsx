@@ -5,7 +5,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Productlist from './components/productlist'
 import Home from './pages/Home'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import Notfound from './pages/Notfound'
 import Products from './pages/Products'
 import Productdetails from './pages/Productdetails'
@@ -71,7 +71,12 @@ function App() {
         })
       }
       <Route path='*' element={<Notfound/>}/>
-      <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/admin' element={<>
+      <Navigate to={'dashboard'}/>
+      <Outlet/>
+      </>}>
+      <Route index path='dashboard' element={<Dashboard/>}/>
+      </Route>
     </Routes>
     </BrowserRouter>
     </>

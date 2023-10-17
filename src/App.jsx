@@ -61,7 +61,7 @@ function App() {
       {
         ROUTES.map(({path,key,element})=>{
         return(
-          <Route path={path} element={
+          <Route path={path} key={key} element={
             <>
              <Navbar/>
             {element}

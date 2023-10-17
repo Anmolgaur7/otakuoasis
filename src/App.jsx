@@ -13,6 +13,7 @@ import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import Applayout from './pages/Applayout'
 
 
 const ROUTES=[
@@ -75,7 +76,9 @@ function App() {
       <Navigate to={'dashboard'}/>
       <Outlet/>
       </>}>
-      <Route index path='dashboard' element={<Dashboard/>}/>
+      <Route index path='dashboard' element={<>
+      <Applayout><Dashboard/></Applayout>
+      </>}/>
       </Route>
     </Routes>
     </BrowserRouter>

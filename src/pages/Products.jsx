@@ -2,7 +2,7 @@ import React from 'react'
 import Productcard from '../components/Productcard'
 import { Link } from 'react-router-dom'
 
-function Products() {
+function Products( ) {
   const products=[
     {
      id:1,

@@ -1,11 +1,11 @@
 import React from 'react'
 import Logo from "../images/oa.png";
-import Banner from '../components/Banner';
 import { Link } from "react-router-dom";
 
 function Navbar() {
     return (
         <>
+        <h1 className='h-2rem text-center bg-black p-2 text-white font-semibold'> <marquee className='w-[25rem]' direction="right">Free Shipping  on all orders above ₨499</marquee></h1>
             <nav className="flex  justify-around items-center  p-2 bg-red-100 mb-5">
                 <ul className='flex items-center'>
                     <li className='m-2 text-lg font-semibold text-black '><a href="/">

@@ -56,7 +56,6 @@ function Applayout({children}) {
         <div className='w-full h-fit overflow-scroll'>
             <div>
             {children}
-
             </div>
         </div>
     </div>

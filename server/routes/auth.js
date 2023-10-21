@@ -84,6 +84,24 @@ router.post('/login', async (req, res, next) => {
 
     } catch (error) {
         console.error(error)
-    }
+    }F
 })
+
+// router.get('/logout', async (req, res, next) => {
+//     try {
+//         const user = await User.findOne({ token: req.headers.authorization })
+//         if (!user) {
+//             res.status(400).send("User not found")
+//         }
+//         else {
+//             await User.updateOne({ _id: user.id, }, {
+//                 $set: { token: null }
+//             })
+//             user.save()
+//             res.status(200).send("User logged out")
+//         }
+//     } catch (error) {
+//         console.error(error)
+//     }
+// })
 module.exports = router

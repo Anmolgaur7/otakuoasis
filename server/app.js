@@ -14,6 +14,7 @@ connect()
 
 //routes
 app.use('/api/auth',require('./routes/auth'))
+app.use('/api/products',require('./routes/products'))
 //server
 app.listen(PORT,()=>{
 console.log(`Server started on ${PORT}`);

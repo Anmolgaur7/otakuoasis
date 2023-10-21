@@ -9,8 +9,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 
 //db
-const connectdb=require('./db/connection')
-connectdb();
+const connect =require('./db/connection');
+connect()
 
 //routes
 app.use('/api/auth',require('./routes/auth'))

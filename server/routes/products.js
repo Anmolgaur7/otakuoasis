@@ -45,6 +45,19 @@ router.get('/',async(req,res)=>{
     }
 });
 
+router.get('/related/:id',async(req,res)=>{
+    try {
+        const product=await Product.findById(req.params.id);
+        if(!product){
+            return res.status(400).json({msg:"Product not found"})
+        }
+        const products=await Product.find({Anime:product.Anime,_id:{$ne:product._id}}).limit(3);
+        res.json(products)
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+})
+
 router.get('/:id',async(req,res)=>{ 
     try {
         const product=await Product.findById(req.params.id);

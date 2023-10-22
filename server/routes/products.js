@@ -9,9 +9,9 @@ router.get('/', (req, res) => {
 
 router.post('/add', async (req, res) => {
     try {
-    const {name,price,description,anime,image,featured} = req.body;
+    const {name,Price,description,Anime,image,featured} = req.body;
     
-    if (!name || !price || !description || !anime || !image || !featured) {
+    if (!name || !Price || !description || !Anime || !image || !featured) {
         return res.status(400).json({ msg: "Please enter all fields" })
     }
     

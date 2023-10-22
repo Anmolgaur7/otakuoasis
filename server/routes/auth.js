@@ -4,7 +4,7 @@ const bycrypt = require('bcryptjs')
 const jwt=require('jsonwebtoken')
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
     res.send('App Route')
 })
 
@@ -28,7 +28,7 @@ router.post('/register', async(req, res) => {
             email,
             password
         })
-    bycrypt.genSalt(10,(err,salt)=>{
+    bycrypt.genSalt(10,(_err,salt)=>{
         bycrypt.hash(newuser.password,salt,async(err,hash)=>{
          if(err)throw err;
          newuser.password=hash;
@@ -47,7 +47,7 @@ router.post('/register', async(req, res) => {
     }
 })
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', async (req, res, _next) => {
     try {
         const { email, password } = req.body
         if (!email || !password) {
@@ -71,7 +71,7 @@ router.post('/login', async (req, res, next) => {
                     const jwtkey = 'this_is_a_secret_key_which_doesnt_need_to_be_exposed'
                     jwt.sign(payload, jwtkey, {
                         expiresIn: 84600
-                    }, async (err, token) => {
+                    }, async (_err, token) => {
                         await User.updateOne({ _id: user.id, }, {
                             $set: { token }
                         })

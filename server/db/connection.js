@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-const URI='mongodb+srv://anmolgaur26:Cristiano7@cluster0.qmbhwjr.mongodb.net/?retryWrites=true&w=majority'
+const URI='mongodb+srv://anmolgaur26:N6kw3cvS2S4bxPTJ@cluster0.muxxyfc.mongodb.net/?retryWrites=true&w=majority'
 
 const connectdb=async ()=>{
     try {

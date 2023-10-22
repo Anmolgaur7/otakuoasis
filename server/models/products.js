@@ -1,42 +1,35 @@
 const mongoose = require('mongoose');
 
-const productschema = mongoose.Schema({
+const Productschema = mongoose.Schema({
     name: {
         type: String,
-        required: [true, "Enter name of product"],
-        trim: true
+        required: true, 
     },
-    price: {
+    Price: {
         type: String,
-        required: [true, "Enter Price of product"],
-        unique: true,
-        trim: true
+        required: true, 
     },
     description: {
         type: String,
-        required: [true, "Enter enterdesc"],
-        trim: true
+        required: true
+        
     },
-    anime: {
+    Anime: {
         type: String,
-        required: [true, "Enter name of Anime"],
-        unique: true,
-        trim: true
+        required: true, 
+            
     },
-
     image: {
         type: String,
-        required: [true, "Enter image of product"],
-        trim: true
+        required: true, 
+            
     },
-
     featured : {
         type: Boolean,
         default: false
     },
 });
 
-
-const Product = mongoose.model('Product', productschema);
+const Product = mongoose.model('Product', Productschema);
 
 module.exports = Product;

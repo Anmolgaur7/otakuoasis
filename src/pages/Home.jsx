@@ -44,7 +44,7 @@ function Home() {
         <img src={Goku} className='h-[80%] relative right-28' />
       </div>
       <div>
-        <h1 className='text-3xl font-semibold m-5'>Featured Products</h1>
+        <h1 className='text-5xl font-semibold m-5'>Featured Products</h1>
         <div className='flex m-2 overflow-y-scroll'>
           {
             loading ?
@@ -57,7 +57,7 @@ function Home() {
            Products.map((product) => {
               return (
                 <Fade triggerOnce>
-                  <Productcard id={`${product._id}`} link={product.link} name={product.name} desc={product.description} price={product.Price} />
+                  <Productcard id={`products/${product._id}`} link={product.link} name={product.name} desc={product.description} price={product.Price} />
                 </Fade>
               )
             })

@@ -61,7 +61,7 @@ router.get('/related/:id',async(req,res)=>{
         if(!product){
             return res.status(400).json({msg:"Product not found"})
         }
-        const products=await Product.find({Anime:product.Anime,_id:{$ne:product._id}}).limit(3);
+        const products=await Product.find({_id:{$ne:product._id}}).limit(3);
         res.json(products)
     } catch (error) {
         res.status(400).json({error:error.message})

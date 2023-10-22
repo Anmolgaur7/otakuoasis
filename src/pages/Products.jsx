@@ -1,41 +1,30 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Productcard from '../components/Productcard'
 import { Link } from 'react-router-dom'
+import { fetchrequest } from '../utils';
+
 
 function Products( ) {
-  const products=[
-    {
-     id:1,
-     name:'Basic tee',
-     desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, recusandae illum dolorio, eius soluta, qui autem?',
-     price:200,
-     link:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg'
-    },
-    {
-      id:2,
-      name:'Basic tee',
-      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. to, eius soluta, qui autem?',
-      price:200,
-      link:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
-     },{
-      id:3,
-      name:'Basic tee',
-      desc:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officrupti laborum ab libero architecto, eius soluta, qui autem?',
-      price:200,
-      link:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg'
-     },{
-      id:4,
-      name:'Basic tee',
-      desc:'Lorem ipsum dolor, sit amet consectetur adipisicingtam corrupti laborum ab libero architecto, eius soluta, qui autem?',
-      price:200,
-      link:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg'
-     },{
-      id:5,
-      name:'Basic tee',
-      desc:'Lorem ipsum dolor, sit amet consectetur adipisa totam corrupti laborum ab libero architecto, eius soluta, qui autem?',
-      price:200,
-      link:'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg'
-     },]
+  const [Products, setProduct] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+      setLoading(true)
+      const fetchproducts = async () => {
+          const prod=await fetchrequest("products/all","GET")
+          console.log( prod);
+          if(prod.error){
+              setError(true)
+          }
+          else{
+              setProduct(prod)
+          }
+      }
+      fetchproducts()
+      setLoading(false)
+  }, [])
+  
   return (
     <div>
       <div className='mt-20 mb-12'>
@@ -43,8 +32,8 @@ function Products( ) {
         <p className='text-lg font-normal text-center'>Checkout our latest merchendise</p>
       </div>
       <br />
-      <div className='flex justify-center items-center'>
-        <div>
+      <div className='flex flex-col justify-center items-center'>
+        <div className='flex space-x-3'>
           <div className='flex items-center flex-col'>
             <h1 className='text-lg font-semibold m-4'>Sort</h1>
             <div>
@@ -93,7 +82,7 @@ function Products( ) {
         <div>
         <div className='flex ml-20 flex-wrap'>
         {
-          products.map((product)=>{
+          Products.map((product)=>{
             return(
             <Productcard  id={product.id} link={product.link} name={product.name} desc={product.desc} price={product.price}/>
             )

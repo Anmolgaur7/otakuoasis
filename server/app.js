@@ -1,5 +1,5 @@
 const express=require('express');
-
+const cors =require('cors');
 const PORT=8000;
 
 const app=express();
@@ -7,6 +7,7 @@ const app=express();
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
+app.use(cors());
 
 //db
 const connect =require('./db/connection');

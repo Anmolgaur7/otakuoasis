@@ -28,13 +28,23 @@ router.post('/add', async (req, res) => {
     }
 })
 
+router.get('/all',async(req,res)=>{
+    try {
+        const products=await Product.find();
+        res.json(products)
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+} 
+)
+
 router.get('/',async(req,res)=>{
     try {
         const {Anime,sort}=req.query;
         const isarray=Array.isArray(Anime);
         const products=await Product.find({
          ...(isarray?{Anime:{$in:Anime}}:{Anime}),
-         ...(sort==='featured'&&{featured:true})   
+         ...(sort==='featured'&&{featured:true})  
         }).sort({
             Price:sort==='asc'?1:sort==='dsc'?-1:0
         })

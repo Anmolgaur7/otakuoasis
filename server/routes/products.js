@@ -3,9 +3,6 @@ const router = express.Router()
 
 const Product = require('../models/products')
 
-router.get('/', (req, res) => {
-    res.send('product Route')
-})
 
 router.post('/add', async (req, res) => {
     try {
@@ -31,12 +28,30 @@ router.post('/add', async (req, res) => {
     }
 })
 
-router.get('/all',async(req,res)=>{
+router.get('/',async(req,res)=>{
     try {
-        const products=await Product.find()
+        const {Anime,sort}=req.query;
+        const isarray=Array.isArray(Anime);
+        const products=await Product.find({
+         ...(isarray?{Anime:{$in:Anime}}:{Anime}),
+         ...(sort==='featured'&&{featured:true})   
+        }).sort({
+            Price:sort==='asc'?1:sort==='dsc'?-1:0
+        })
         res.json(products)
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(400).json({error:error.message})
     }
-})
+});
+
+router.get('/:id',async(req,res)=>{ 
+    try {
+        const product=await Product.findById(req.params.id);
+        res.json(product);
+    } catch (error) {
+        res.status(400).json({error:error.message});
+    }
+});
+
 module.exports = router

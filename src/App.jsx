@@ -48,11 +48,6 @@ const ROUTES = [
     key: 'CART',
     element: <Cart />
   },
-  {
-    path: '/:id',
-    key: 'ROOT/ID',
-    element: <Productdetails />
-  },
 ]
 const APP_ROUTES = [
   {

@@ -41,7 +41,7 @@ function Home() {
     <>
       <div className='h-screen flex justify-center items-center '>
         <h1 className='text-11xl text-center mb-24  font-bold absolute text-blue-800 '>Hello&nbsp; &nbsp; &nbsp;Senpai!</h1>
-        <img src={Goku} className='h-[80%]  right-28' />
+        <img src={Goku} className='h-[80%]  relative right-28' />
       </div>
       <div>
         <h1 className='text-5xl font-semibold m-5'>Featured Products</h1>
@@ -57,7 +57,7 @@ function Home() {
            Products.map((product) => {
               return (
                 <Fade triggerOnce>
-                  <Productcard id={`products/${product._id}`} link={product.link} name={product.name} desc={product.description} price={product.Price} />
+                  <Productcard id={`${product._id}`} link={product.link} name={product.name} desc={product.description} price={product.Price} />
                 </Fade>
               )
             })

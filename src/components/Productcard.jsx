@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Productcard(props) {
   return (
     <>
-    <Link to={`${props?.id}`}>
+    <a href={`/products/${props?.id}`}>
     <div className='shadow-md m-4 '>
     <div className='w-[15vw] h-[50vh]  bg-white flex flex-col'>
     <img src={props.link} className='h-96 bg-slate-100 hover:opacity-75 ' />
@@ -14,7 +14,7 @@ function Productcard(props) {
     </div>
     </div>      
     </div>
-    </Link>
+    </a>
     </>
   )
 }

@@ -84,7 +84,7 @@ router.post('/login', async (req, res, _next) => {
 
     } catch (error) {
         console.error(error)
-    }F
+    }
 })
 
 // router.get('/logout', async (req, res, next) => {

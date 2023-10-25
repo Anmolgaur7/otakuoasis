@@ -28,7 +28,6 @@ function Products( ) {
   const sort=(e)=>{
     e.preventDefault()
     const sort=e.target.sort.value
-    console.log(sort);
     const fetchproducts = async () => {
       const prod=await fetchrequest(`products/all?sort=${sort}`,"GET")
       console.log( prod);

@@ -15,11 +15,13 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Applayout from './pages/Applayout'
 import Addproduct from './pages/Addproduct'
+import Landing from './pages/Landing'
 
 
 const ROUTES = [
+ 
   {
-    path: '/',
+    path: '/home',
     key: 'ROOT',
     element: <Home />
   },
@@ -66,7 +68,12 @@ const APP_ROUTES = [
     element: <Addproduct/>
   },
 ]
+
+const Protectedroute=({element,isloggedin,...rest})=>{
+  return isloggedin ? <Outlet/>:<Navigate to='/login'/>
+}
 function App() {
+  const token = window.localStorage.getItem("token")||null;
   return (
     <>
       <BrowserRouter>
@@ -84,9 +91,9 @@ function App() {
             })
           }
           <Route path='*' element={<Notfound />} />
-
+          <Route path='/' element={<Landing/>} />
           <Route path='/admin' element={<>
-            <Outlet />
+            <Protectedroute isloggedin={token}/>
           </>}>
             {
               APP_ROUTES.map(({ path, key, element }) => {

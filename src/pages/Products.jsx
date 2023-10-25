@@ -12,7 +12,7 @@ function Products( ) {
   useEffect(() => {
       setLoading(true)
       const fetchproducts = async () => {
-          const prod=await fetchrequest("products/all","GET")
+          const prod=await fetchrequest("products/all?","GET")
           console.log( prod);
           if(prod.error){
               setError(true)
@@ -24,7 +24,23 @@ function Products( ) {
       fetchproducts()
       setLoading(false)
   }, [])
-  
+
+  const sort=(e)=>{
+    e.preventDefault()
+    const sort=e.target.sort.value
+    console.log(sort);
+    const fetchproducts = async () => {
+      const prod=await fetchrequest(`products/all?sort=${sort}`,"GET")
+      console.log( prod);
+      if(prod.error){
+          setError(true)
+      }
+      else{
+          setProduct(prod)
+      }
+  } 
+  fetchproducts()
+  }
   return (
     <div>
       <div className='mt-20 mb-12'>
@@ -37,12 +53,13 @@ function Products( ) {
           <div className='flex items-center flex-col'>
             <h1 className='text-lg font-semibold m-4'>Sort</h1>
             <div>
+              <form onSubmit={sort}>
               <div>
-                <input type="radio" name='sort' id='low' className=' mr-2' />
+                <input type="radio" name='sort' id='low' value="asc" className=' mr-2' />
                 <label htmlFor="low">Price Low</label>
               </div>
               <div>
-                <input type="radio" name='sort' id='high' className=' mr-2' />
+                <input type="radio" name='sort' id='high' value="dsc" className=' mr-2' />
                 <label htmlFor="high">Price high</label>
               </div>
               <div>
@@ -53,29 +70,8 @@ function Products( ) {
                 <input type="radio" name='sort' id='featured' className=' mr-2' />
                 <label htmlFor="featured">Featured</label>
               </div>
-            </div>
-          </div>
-          <div className='flex items-center flex-col'>
-            <h1 className='text-lg font-semibold m-4'>Category</h1>
-            <div>
-              <label htmlFor="arrivals"> NewArrivals</label>
-              <input type="checkbox" name="arrivals" id="arrivals" className='ml-2' />
-            </div>
-            <div>
-              <label htmlFor="tees">Tees</label>
-              <input type="checkbox" name="tees" id="tees"className='ml-2' />
-            </div>
-            <div>
-              <label htmlFor="Action">Action</label>
-              <input type="checkbox" name="Action" id="Action"className='ml-2' />
-            </div>
-            <div>
-              <label htmlFor="Posters">Posters</label>
-              <input type="checkbox" name="Posters" id="Posters" className='ml-2'/>
-            </div>
-            <div>
-              <label htmlFor="merchandise"className='ml-[px]'>Merchandise</label>
-              <input type="checkbox" name="merchandise" id="merchandise" className='' />
+              <button className='bg-blue-400 text-white rounded-lg p-1' type='submit'>Apply Filter</button>
+              </form>
             </div>
           </div>
         </div>
@@ -84,7 +80,7 @@ function Products( ) {
         {
           Products.map((product)=>{
             return(
-            <Productcard  id={product._id} link={product.link} name={product.name} desc={product.desc} price={product.price}/>
+            <Productcard  id={product._id} link={product.link} name={product.name} desc={product.desc} price={product.Price}/>
             )
           })
         }

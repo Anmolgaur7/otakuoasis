@@ -8,7 +8,7 @@ function Navbar() {
         <h1 className='h-2rem text-center bg-black p-2 text-white font-semibold'> <marquee className='w-[25rem]' direction="right">Free Shipping  on all orders above ₨499</marquee></h1>
             <nav className="flex  justify-around items-center  p-2 bg-red-100 mb-5">
                 <ul className='flex items-center'>
-                    <li className='m-2 text-lg font-semibold text-black '><a href="/">
+                    <li className='m-2 text-lg font-semibold text-black '><a href="/home">
                         <img src={Logo} className='w-[8vw] rounded-full' />
                     </a></li>
                     <li className='m-2 text-lg font-semibold text-black '><a href="/products">Products</a></li>

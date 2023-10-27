@@ -7,6 +7,8 @@ const Product = require('../models/products')
 router.post('/add', async (req, res) => {
     try {
     const {name,Price,description,Anime,image,featured} = req.body;
+    //simple validation
+    console.log('name',name ,'Price',Price,'description',description,'Anime',Anime,'image',image,'featured',featured);
     
     if (!name || !Price || !description || !Anime || !image || !featured) {
         return res.status(400).json({ msg: "Please enter all fields" })
@@ -17,6 +19,7 @@ router.post('/add', async (req, res) => {
 
     if(isexist){
         return res.status(400).json({msg:"Product already exists"})
+        alert("Product already exists")
     }
     const newproduct=new Product({
       ...req.body

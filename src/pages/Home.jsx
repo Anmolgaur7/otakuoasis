@@ -49,10 +49,7 @@ function Home() {
           {
             loading ?
             <div className='animate-pulse flex flex-col space-y-10'>
-              <div className='h-96 bg-gray-200 rounded md'></div>
-              <div className='h-4 bg-gray-200 rounded md'></div> 
-              <div className='h-4 bg-gray-200 rounded md'></div>
-              <div className='h-4 bg-gray-200 rounded md'></div>
+            Loading
             </div>:error?<h1 className='text-2xl text-center font-semibold'>Error</h1>:
            Products.map((product) => {
               return (

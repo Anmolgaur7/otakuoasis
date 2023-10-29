@@ -13,7 +13,7 @@ function Productdetails() {
             ...Product
         }
         console.log(cartproduct);
-        const cart=JSON.parse(localStorage.getItem('cart'))
+        const cart=JSON.parse(localStorage.getItem('cart'))||[]
         localStorage.setItem('cart',JSON.stringify([...cart,cartproduct]))
         // navigate('/cart')
     }

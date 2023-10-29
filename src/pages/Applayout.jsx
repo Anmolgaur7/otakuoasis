@@ -53,7 +53,7 @@ function Applayout({children}) {
            </div>
         </div> 
 
-        <div className='w-full h-screen'>
+        <div className='w-full h-auto'>
             <div >
             {children}
             </div>

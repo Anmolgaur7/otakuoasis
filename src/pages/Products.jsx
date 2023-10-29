@@ -79,7 +79,7 @@ function Products( ) {
         {
           Products.map((product)=>{
             return(
-            <Productcard  id={product._id} link={product.link} name={product.name} desc={product.desc} price={product.Price}/>
+            <Productcard  image={product.image}  id={product._id} link={product.link} name={product.name} desc={product.desc} price={product.Price}/>
             )
           })
         }

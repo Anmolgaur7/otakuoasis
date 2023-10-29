@@ -6,7 +6,7 @@ function Productcard(props) {
     <a href={`/products/${props?.id}`}>
     <div className='shadow-md m-4 '>
     <div className='w-[15vw] h-[50vh]  bg-white flex flex-col'>
-    <img src={props.link} className='h-96 bg-slate-100 hover:opacity-75 ' />
+    <img src={props.image} className='h-96 bg-slate-100 hover:opacity-75 ' />
     <div className='m-4'>
     <h1 className='font-semibold text-lg'>{props.name}</h1>
     <h1 className='text-md font-semibold'>₨{props.price}</h1>    

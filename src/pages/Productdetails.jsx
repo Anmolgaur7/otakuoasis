@@ -9,7 +9,13 @@ function Productdetails() {
     const navigate = useNavigate()
 
     const cartadd = () => {
-        navigate('/cart')
+        const cartproduct={
+            ...Product
+        }
+        console.log(cartproduct);
+        const cart=JSON.parse(localStorage.getItem('cart'))
+        localStorage.setItem('cart',JSON.stringify([...cart,cartproduct]))
+        // navigate('/cart')
     }
 
     const [Product, setProduct] = useState([])
@@ -95,12 +101,6 @@ function Productdetails() {
                             </div>
                             <p class="leading-relaxed">{Product.description}</p>
                             <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                                <div class="flex">
-                                    <span class="mr-3">Color</span>
-                                    <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-                                    <button class="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                                    <button class="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
-                                </div>
                                 <div class="flex ml-6 items-center">
                                     <span class="mr-3">Size</span>
                                     <div class="relative">

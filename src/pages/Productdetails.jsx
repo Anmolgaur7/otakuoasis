@@ -14,7 +14,13 @@ function Productdetails() {
         }
         console.log(cartproduct);
         const cart=JSON.parse(localStorage.getItem('cart'))||[]
+        const existing=cart.find((item)=>item._id===cartproduct._id)
+        if(!existing){
         localStorage.setItem('cart',JSON.stringify([...cart,cartproduct]))
+        }
+        else{
+            alert('Item already in cart')
+        }
         // navigate('/cart')
     }
 

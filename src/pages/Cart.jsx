@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import Sanji from "../images/sanji.png";
 
 function Cart() {
+    const [cartitems,setcart]=useState([]);
     const navigate=useNavigate();
+    let price=0;
 
     const checkout=()=>{
         navigate('/checkout')
     }
+    useEffect(()=>{
+        cartitems.forEach((item)=>{
+            console.log(item.Price);
+        })
+        const cart=JSON.parse(localStorage.getItem('cart'))||[]
+        setcart(cart)
+    },[])
+    console.log(price);
+    console.log(cartitems);
     return (
         <div className='bg-cartbg bg-cover rounded-2xl  flex justify-center items-center '>
 
@@ -17,21 +28,23 @@ function Cart() {
                             <div class="px-4 py-6 sm:px-8 sm:py-10">
                                 <div class="flow-root">
                                     <ul class="-my-8">
-                                        <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
+
+                                        {
+                                        cartitems.map((item,key)=>{
+                                        return(
+                                            <li id={key} class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
                                             <div class="shrink-0 relative">
                                                 <span class="absolute top-1 left-1 flex h-6 w-6 items-center justify-center rounded-full border bg-white text-sm font-medium text-gray-500 shadow sm:-top-2 sm:-right-2">1</span>
-                                                <img class="h-24 w-24 max-w-full rounded-lg object-cover" src="https://images.unsplash.com/photo-1588484628369-dd7a85bfdc38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHNuZWFrZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=150&q=60" alt="" />
+                                                <img class="h-24 w-24 max-w-full rounded-lg object-cover" src={item.image} alt="" />
                                             </div>
 
                                             <div class="relative flex flex-1 flex-col justify-between">
                                                 <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
                                                     <div class="pr-8 sm:pr-5">
-                                                        <p class="text-base font-semibold text-gray-900">Nike Air Max 2019</p>
-                                                        <p class="mx-0 mt-1 mb-0 text-sm text-gray-400">36EU - 4US</p>
+                                                        <p class="text-base font-semibold text-gray-900">{item.name}</p>
                                                     </div>
-
                                                     <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
-                                                        <p class="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">$1259.00</p>
+                                                        <p class="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">{item.Price}</p>
                                                     </div>
                                                 </div>
 
@@ -44,33 +57,10 @@ function Cart() {
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
-                                            <div class="shrink-0 relative">
-                                                <span class="absolute top-1 left-1 flex h-6 w-6 items-center justify-center rounded-full border bg-white text-sm font-medium text-gray-500 shadow sm:-top-2 sm:-right-2">1</span>
-                                                <img class="h-24 w-24 max-w-full rounded-lg object-cover" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=150&q=60" alt="" />
-                                            </div>
-
-                                            <div class="relative flex flex-1 flex-col justify-between">
-                                                <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
-                                                    <div class="pr-8 sm:pr-5">
-                                                        <p class="text-base font-semibold text-gray-900">Nike Air Max 2019</p>
-                                                        <p class="mx-0 mt-1 mb-0 text-sm text-gray-400">36EU - 4US</p>
-                                                    </div>
-
-                                                    <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
-                                                        <p class="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">$1259.00</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
-                                                    <button type="button" class="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900">
-                                                        <svg class="block h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" class=""></path>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        )    
+                                        }
+                                        ) 
+                                        }
                                     </ul>
                                 </div>
 

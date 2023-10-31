@@ -7,6 +7,7 @@ import Productcard from '../components/Productcard';
 function Productdetails() {
     const { id } = useParams()
     const navigate = useNavigate()
+    const user=JSON.parse(localStorage.getItem('user'))||{}
 
     const cartadd = () => {
         const cartproduct={

@@ -19,6 +19,7 @@ function Cart() {
         localStorage.setItem('cart',JSON.stringify(newcart))
         setcart(newcart)
     }
+    
     const total=cartitems.reduce((acc,item)=>acc+Number(item.Price)*Number(quantity),0)
     return (
         <div className='bg-cartbg bg-cover rounded-2xl  flex justify-center items-center '>
@@ -88,7 +89,7 @@ function Cart() {
                                 </div>
                                 <div class="mt-6 flex items-center justify-between">
                                     <p class="text-sm font-medium text-gray-900">Total</p>
-                                    <p class="text-2xl font-semibold text-gray-900"><span class="text-xs font-normal text-gray-400">USD</span> 2499.00</p>
+                                    <p class="text-2xl font-semibold text-gray-900"><span class="text-xs font-normal text-gray-400">INR</span>&nbsp;{total+8}</p>
                                 </div>
 
                                 <div class="mt-6 text-center">

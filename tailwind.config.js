@@ -10,6 +10,9 @@ export default {
       fontSize:{
         '10xl':'11rem',
         '11xl':'12rem'
+      },
+      borderRadius:{
+        '4xl':'3rem'
       }
     },
   },

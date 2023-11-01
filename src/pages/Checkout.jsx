@@ -1,6 +1,23 @@
 import React from 'react'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+
+const stripepromise=loadStripe("pk_test_51O7ctDSHY56XZU6lLSpO2HWofdo1xdXFmcoeRFp1faUWYJgXcNuLsjReumhpdBEAgq29AmCnSj5F5DXOg6IFE2h700o4mrKYp3");
 
 function Checkout() {
+  const payment=async()=>{
+    const response=await fetch("http://localhost:8000/api/payment/create-payment-intent",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:{
+        amount:100
+      }
+    })
+    const data=await response.json()
+    console.log(data);
+  }
   return (
     <div>
        <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
@@ -149,11 +166,9 @@ function Checkout() {
     <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button>
   </div>
 </div>
- 
+ <button onClick={()=>payment}>Pay</button>
       
     </div>
   )
 }
-
-
 export default Checkout

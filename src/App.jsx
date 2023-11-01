@@ -68,7 +68,6 @@ const APP_ROUTES = [
     element: <Addproduct/>
   },
 ]
-
 const Protectedroute=({element,isloggedin,...rest})=>{
   return isloggedin ? <Outlet/>:<Navigate to='/login'/>
 }

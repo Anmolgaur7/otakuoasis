@@ -19,8 +19,8 @@ function Cart() {
         localStorage.setItem('cart',JSON.stringify(newcart))
         setcart(newcart)
     }
-    
-    const total=cartitems.reduce((acc,item)=>acc+Number(item.Price)*Number(quantity),0)
+    console.log(cartitems)
+   const total=cartitems.reduce((acc,item)=>acc+item.Price*item.quantity,0)
     return (
         <div className='bg-cartbg bg-cover rounded-2xl  flex justify-center items-center '>
 
@@ -36,7 +36,7 @@ function Cart() {
                                         return(
                                             <li  class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
                                             <div class="shrink-0 relative">
-                                                <span class="absolute top-1 left-1 flex h-6 w-6 items-center justify-center rounded-full border bg-white text-sm font-medium text-gray-500 shadow sm:-top-2 sm:-right-2">1</span>
+                                                <span class="absolute top-1 left-1 flex h-6 w-6 items-center justify-center rounded-full border bg-white text-sm font-medium text-gray-500 shadow sm:-top-2 sm:-right-2">{item.quantity}</span>
                                                 <img class="h-24 w-24 max-w-full rounded-lg object-cover" src={item.image} alt="" />
                                             </div>
 
@@ -49,7 +49,15 @@ function Cart() {
                                                         <p class="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">₨&nbsp;{item.Price}</p>
                                                     </div>
                                                 </div>
-                                                <select name="quantity" className='w-[2rem] mb-8' onChange={(e)=>setquantity(e.target.value)}>
+                                                <select name="quantity" className='w-[2rem] mb-8' onChange={(e)=>{
+                                                    const newcart=cartitems.map((cartitem)=>{
+                                                        if(cartitem._id===item._id){
+                                                            cartitem.quantity=e.target.value
+                                                        }
+                                                        return cartitem
+                                                    })
+                                                    localStorage.setItem('cart',JSON.stringify(newcart))
+                                                }}>
                                                     <option value="1" selected>1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option >
@@ -74,13 +82,15 @@ function Cart() {
                                         }
                                     </ul>
                                 </div>
-
+                                <div class="mt-6 flex justify-center items-center">
+                                        <button><a href="/cart" className='group inline-flex w-full items-center justify-center rounded-md bg-orange-500 px-4 py-2 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800 ' target="_blank" rel="noopener noreferrer">Update Quantity</a> </button>
+                                </div>
                                 <hr class="mx-0 mt-6 mb-0 h-0 border-r-0 border-b-0 border-l-0 border-t border-solid border-gray-300" />
 
                                 <div class="mt-6 space-y-3 border-t border-b py-8">
                                     <div class="flex items-center justify-between">
                                         <p class="text-gray-400">Subtotal</p>
-                                        <p class="text-lg font-semibold text-gray-900">${total}</p>
+                                        <p class="text-lg font-semibold text-gray-900">${Number(total)}</p>
                                     </div>
                                     <div class="flex items-center justify-between">
                                         <p class="text-gray-400">Shipping</p>
@@ -89,7 +99,7 @@ function Cart() {
                                 </div>
                                 <div class="mt-6 flex items-center justify-between">
                                     <p class="text-sm font-medium text-gray-900">Total</p>
-                                    <p class="text-2xl font-semibold text-gray-900"><span class="text-xs font-normal text-gray-400">INR</span>&nbsp;{total+8}</p>
+                                    <p class="text-2xl font-semibold text-gray-900"><span class="text-xs font-normal text-gray-400">INR</span>&nbsp;{Number(total)+8}</p>
                                 </div>
 
                                 <div class="mt-6 text-center">

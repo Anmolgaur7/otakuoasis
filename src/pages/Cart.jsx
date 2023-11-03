@@ -21,6 +21,7 @@ function Cart() {
     }
     console.log(cartitems)
    const total=cartitems.reduce((acc,item)=>acc+item.Price*item.quantity,0)
+   localStorage.setItem('total',total)
     return (
         <div className='bg-cartbg bg-cover rounded-2xl  flex justify-center items-center '>
 

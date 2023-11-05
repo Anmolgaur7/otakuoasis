@@ -32,6 +32,10 @@ const Orderschema = moongose.Schema({
         type: String,
         required: true, 
     },
+    OrderItem: {
+        type: Array,
+        required: true, 
+    },
 });
 
 const Order = moongose.model('Order', Orderschema);

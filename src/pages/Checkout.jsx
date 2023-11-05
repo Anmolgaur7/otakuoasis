@@ -5,9 +5,31 @@ import Checkoutform from '../components/Checkoutform'
 
 const stripepromise=loadStripe("pk_test_51O7ctDSHY56XZU6lLSpO2HWofdo1xdXFmcoeRFp1faUWYJgXcNuLsjReumhpdBEAgq29AmCnSj5F5DXOg6IFE2h700o4mrKYp3");
 
+
 function Checkout() {
   const [clientSecret,setsc]=useState(null)
   const cart=JSON.parse(localStorage.getItem("cart"))
+  const [order,setorder]=useState({
+    Name:"",
+    Email:"",
+    Address:"",
+    City:"",
+    Country:"",
+    Postalcode:"",
+    Phonenumber:"",
+    Orderitem:cart
+  })
+  const placeorder=async()=>{
+    const response = await fetch("http://localhost:8000/api/order/new", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(order) 
+    })
+    const res = await response.json()
+    console.log(res);
+  }
   const payment = async () => {
     const response = await fetch("http://localhost:8000/api/payment/create-payment-intent", {
       method: "POST",
@@ -40,16 +62,16 @@ function Checkout() {
     <div>
       <h1 className='font-serif text-2xl font-semibold'>Order Form</h1>
       <form className='m-2'>
-      <input type="text" placeholder="Name" className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
-      <input type="text" placeholder="Email" className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
-      <input type="text" placeholder="Address" className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
-      <input type="text" placeholder="City" className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
-      <input type="text" placeholder="Country" className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
-      <input type="text" placeholder="PostalCode" className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
-      <input type="text" placeholder="PhoneNumber" className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
+      <input type="text" placeholder="Name" name='Name' onChange={(e)=>setorder({...order,Name:e.target.value})} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
+      <input type="text" placeholder="Email" name='Email' onChange={(e)=>setorder({...order,Email:e.target.value})} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
+      <input type="text" placeholder="Address" name='Address' onChange={(e)=>setorder({...order,Address:e.target.value})} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
+      <input type="text" placeholder="City"  name='City' onChange={(e)=>setorder({...order,City:e.target.value})} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
+      <input type="text" placeholder="Country" name='Country' onChange={(e)=>setorder({...order,Country:e.target.value})} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
+      <input type="text" placeholder="PostalCode" name='PostalCode' onChange={(e)=>setorder({...order,Postalcode:e.target.value})} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
+      <input type="text" placeholder="PhoneNumber" name='PhoneNumber' onChange={(e)=>setorder({...order,Phonenumber:e.target.value})} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4'/>
       <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white" onClick={(e)=>{
         e.preventDefault()
-        payment()
+        placeorder().then(payment())
       }}>Place Order</button>
       </form>
     </div>

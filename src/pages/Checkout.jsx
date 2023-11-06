@@ -20,7 +20,7 @@ function Checkout() {
     Orderitem:cart
   })
   const placeorder=async()=>{
-    const{Name,Email,Address,City,Country,Postalcode,Phonenumber,Orderitem}=order
+    const{Name,Email,Address,City,Country,Postalcode,Phonenumber,Orderitem}=order 
     const response = await fetch("http://localhost:8000/api/order/new", {
       method: "POST",
       headers: {
@@ -44,7 +44,6 @@ function Checkout() {
     const data = await response.json();
 
     setsc(data.clientSecret)
-    console.log(data.clientSecret)
   };
   const appearance = {
     theme: 'stripe',

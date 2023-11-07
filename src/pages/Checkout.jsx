@@ -17,17 +17,18 @@ function Checkout() {
     Country: "",
     Postalcode: "",
     Phonenumber: "",
-    Orderitem: cart
+    OrderItem: cart
   })
   const placeorder = async (e) => {
     try {
       e.preventDefault()
-      const response = await fetch("http://localhost:8000/api/order/new", {
+      const { Name, Email, Address, City, Country, PostalCode, PhoneNumber,OrderItem } = order 
+      const response = await fetch("http://localhost:8000/api/orders/new", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: { order}
+        body: JSON.stringify({ Name, Email, Address, City, Country, PostalCode, PhoneNumber,OrderItem})
       })
       const res = await response.json()
       console.log(res);
@@ -73,8 +74,8 @@ function Checkout() {
               <input type="text" placeholder="Address" name='Address' onChange={(e) => setorder({ ...order, Address: e.target.value })} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4' />
               <input type="text" placeholder="City" name='City' onChange={(e) => setorder({ ...order, City: e.target.value })} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4' />
               <input type="text" placeholder="Country" name='Country' onChange={(e) => setorder({ ...order, Country: e.target.value })} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4' />
-              <input type="text" placeholder="PostalCode" name='PostalCode' onChange={(e) => setorder({ ...order, Postalcode: e.target.value })} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4' />
-              <input type="text" placeholder="PhoneNumber" name='PhoneNumber' onChange={(e) => setorder({ ...order, Phonenumber: e.target.value })} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4' />
+              <input type="text" placeholder="PostalCode" name='PostalCode' onChange={(e) => setorder({ ...order, PostalCode: e.target.value })} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4' />
+              <input type="text" placeholder="PhoneNumber" name='PhoneNumber' onChange={(e) => setorder({ ...order, PhoneNumber: e.target.value })} className='border-2 border-gray-300 rounded-md p-2 w-full mb-4' />
               <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white" type='submit'>Place Order</button>
             </form>
           </div>

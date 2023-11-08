@@ -44,6 +44,38 @@ router.get('/all',async(req,res)=>{
 } 
 )
 
+router.get('/all/count',async(req,res)=>{
+    try {
+        const products=await Product.find();
+        res.json(products)
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+})
+
+router.delete('/delete/:id',async(req,res)=>{
+    try {
+        const product=await Product.findById(req.params.id);
+        if(!product){
+            return res.status(400).json({msg:"Product not found"})
+        }
+        await product.deleteOne(product) 
+        res.status(200).json({msg:"Product deleted successfully"})
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+})
+
+router.get('/search',async(req,res)=>{
+    try {
+        const {name}=req.query;
+        const products=await Product.find({name:{$regex:name,$options:'i'}})
+        res.json(products)
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+})
+
 router.get('/',async(req,res)=>{
     try {
         const {Anime,sort}=req.query;

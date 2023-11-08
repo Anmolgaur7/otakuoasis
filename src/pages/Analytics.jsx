@@ -5,6 +5,8 @@ function Analytics() {
     const [orders, setorders] = useState(0)
     const [products, setproducts] = useState([])
     const [nump, setnump] = useState(0)
+    const [customers, setcustomers] = useState([])
+    const [numc, setnumc] = useState(0)
 
 
     const handleorder = async (e) => {
@@ -24,13 +26,24 @@ function Analytics() {
             console.log(error);
         }
     }
-    console.log(order);
-    const calc = () => {
-        console.log(order.length);
-        console.log(products.length);
-        setorders(order.length)
+    const handlecustomers= async (e) => {
+        try {
+            const response = await fetch('http://localhost:8000/api/auth/all', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            )
+            const res = await response.json()
+            if (res !== null) {
+                setcustomers(res)
+                console.log(res);
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
-
     const handleproducts = async (e) => {
         try {
             const response = await fetch('http://localhost:8000/api/products/all/count', {
@@ -43,10 +56,20 @@ function Analytics() {
             const res = await response.json()
             if (res !== null) {
                 setproducts(res)
+                console.log(res);
             }
         } catch (error) {
             console.log(error);
         }
+    }
+    console.log(order);
+    const calc = () => {
+        console.log(order.length);
+        console.log(products.length);
+        console.log(customers.length);
+        setorders(order.length)
+        setnump(products.length)
+        setcustomers(customers.length)
     }
     useEffect(() => {
         handleorder();
@@ -61,7 +84,7 @@ function Analytics() {
                     <h1 className='m-2 text-xl font-semibold '>Orders : {`${orders}`}</h1>
                 </div>
                 <div className='flex flex-col bg-red-300 justify-center rounded-xl m-5 items-center  w-[10rem] h-[10rem]'>
-                    <h1 className='m-2 text-xl font-semibold'>Products:</h1>
+                    <h1 className='m-2 text-xl font-semibold'>Products:{`${nump}`}</h1>
                     <h1 className='m-2 text-xl font-semibold'>Customers:</h1>
                 </div>
             </div>

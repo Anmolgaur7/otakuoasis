@@ -4,8 +4,13 @@ const bycrypt = require('bcryptjs')
 const jwt=require('jsonwebtoken')
 const router = express.Router()
 
-router.get('/', (_req, res) => {
-    res.send('App Route')
+router.get('/all', (_req, res) => {
+    try {
+        const users = User.find();
+        res.json(users)   
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
 })
 
 router.post('/register', async(req, res) => {

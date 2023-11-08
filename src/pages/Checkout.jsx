@@ -31,8 +31,6 @@ function Checkout() {
         body: JSON.stringify({ Name, Email, Address, City, Country, PostalCode, PhoneNumber,OrderItem})
       })
       const res = await response.json()
-      console.log(res);
-
     } catch (error) {
       console.log(error);
     }

@@ -16,6 +16,7 @@ import Dashboard from './pages/Dashboard'
 import Applayout from './pages/Applayout'
 import Addproduct from './pages/Addproduct'
 import Landing from './pages/Landing'
+import Analytics from './pages/Analytics'
 
 
 const ROUTES = [
@@ -66,6 +67,11 @@ const APP_ROUTES = [
     path: "/admin/addproduct",
     key: 'Product',
     element: <Addproduct/>
+  },
+  {
+    path: "/admin/analytics",
+    key: 'Product',
+    element: <Analytics/>
   },
 ]
 const Protectedroute=({element,isloggedin,...rest})=>{

@@ -46,7 +46,7 @@ function Analytics() {
     }
     const handleproducts = async (e) => {
         try {
-            const response = await fetch('http://localhost:8000/api/products/all/count', {
+            const response = await fetch('http://localhost:8000/api/products/all/count',{
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -85,7 +85,7 @@ function Analytics() {
                 </div>
                 <div className='flex flex-col bg-red-300 justify-center rounded-xl m-5 items-center  w-[10rem] h-[10rem]'>
                     <h1 className='m-2 text-xl font-semibold'>Products:{`${nump}`}</h1>
-                    <h1 className='m-2 text-xl font-semibold'>Customers:</h1>
+                    <h1 className='m-2 text-xl font-semibold'>Customers:{`${numc}`}</h1>
                 </div>
             </div>
 

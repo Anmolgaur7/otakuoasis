@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {ToastContainer,toast} from 'react-toastify'
 
 function Login() {
   const navigate=useNavigate()
@@ -39,6 +40,8 @@ function Login() {
     }
   }, [])
   return (
+    <>
+     <ToastContainer/>
     <div className='h-screen flex justify-center items-center'>
       <form onSubmit={(e) => handlesubmit(e)} className='md: bg-white flex-col flex justify-center items-center p-20 shadow-lg rounded-lg'>
         <h1 className='text-4xl font-mono font-bold'>Welcome Back</h1>
@@ -51,6 +54,7 @@ function Login() {
         <div className='mt-4 font-medium font-mono'>Did'nt have an account? <span className='text-blue-400'><a href="/users/signup">Sign Up</a></span></div>
       </form>
     </div>
+    </>
   )
 }
 export default Login

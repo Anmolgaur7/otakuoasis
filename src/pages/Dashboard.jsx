@@ -38,9 +38,9 @@ function Dashboard() {
   }, [])
   return (
     <>
-      <div>
-        <h1 className='text-5xl font-mono font-semibold m-3'>Orders</h1>
-        <table className='border-4 border-black text-xl text-center '>
+      <div className='flex justify-center items-center flex-col'>
+      <h1 className='text-5xl font-mono font-semibold m-3 mt-10'>Orders</h1>
+        <table className='border-4 border-black text-xl text-center mt-10 '>
           <tr className='border-4 border-black text-2xl font-semibold '>
             <td className='border-4 border-black  '>Customer</td>
             <td className='border-4 border-black  '>Address</td>

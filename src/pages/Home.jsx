@@ -2,6 +2,8 @@ import React, { useEffect,useState } from 'react'
 import Goku from "../images/luffy.png";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Productcard from "../components/Productcard";
 import Banner from '../components/Banner';
 import { fetchrequest } from '../utils';
@@ -39,6 +41,7 @@ function Home() {
   
   return (
     <>
+    <ToastContainer/>
       <div className='h-screen flex justify-center items-center '>
         <h1 className='text-11xl text-center mb-24  font-bold absolute text-blue-800 '>Hello&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Senpai!</h1>
         <img src={Goku} className='h-[80%]  relative right-28' />

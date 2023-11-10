@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 function Cart() {
     const [cartitems,setcart]=useState([]);
@@ -84,7 +85,7 @@ function Cart() {
                                     </ul>
                                 </div>
                                 <div class="mt-6 flex justify-center items-center">
-                                        <button><a href="/cart" className='group inline-flex w-full items-center justify-center rounded-md bg-orange-500 px-4 py-2 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800 ' target="_blank" rel="noopener noreferrer">Update Quantity</a> </button>
+                                        <button><a href="/cart" className='group inline-flex w-full items-center justify-center rounded-md bg-orange-500 px-4 py-2 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800 ' target="_blank" rel="noopener noreferrer" onClick={()=>{toast.success("Cart Updated")}}>Update Quantity</a> </button>
                                 </div>
                                 <hr class="mx-0 mt-6 mb-0 h-0 border-r-0 border-b-0 border-l-0 border-t border-solid border-gray-300" />
 

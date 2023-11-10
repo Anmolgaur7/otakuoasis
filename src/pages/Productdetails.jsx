@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import Relatedproducts from '../components/Relatedproducts'
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchrequest } from '../utils';
+import {toast} from 'react-toastify'
 import Productcard from '../components/Productcard';
 
 function Productdetails() {
@@ -18,9 +19,10 @@ function Productdetails() {
         const existing=cart.find((item)=>item._id===cartproduct._id)
         if(!existing){
         localStorage.setItem('cart',JSON.stringify([...cart,cartproduct]))
+        toast.success('Item added to cart')
         }
         else{
-            alert('Item already in cart')
+            toast.error('Item already in cart')
         }
         // navigate('/cart')
     }

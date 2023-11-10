@@ -17,6 +17,8 @@ import Applayout from './pages/Applayout'
 import Addproduct from './pages/Addproduct'
 import Landing from './pages/Landing'
 import Analytics from './pages/Analytics'
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const ROUTES = [
@@ -82,6 +84,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <ToastContainer/>
         <Routes>
           {
             ROUTES.map(({ path, key, element }) => {

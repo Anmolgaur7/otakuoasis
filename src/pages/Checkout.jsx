@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import Checkoutform from '../components/Checkoutform'
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const stripepromise = loadStripe("pk_test_51O7ctDSHY56XZU6lLSpO2HWofdo1xdXFmcoeRFp1faUWYJgXcNuLsjReumhpdBEAgq29AmCnSj5F5DXOg6IFE2h700o4mrKYp3");
 
@@ -31,6 +33,8 @@ function Checkout() {
         body: JSON.stringify({ Name, Email, Address, City, Country, PostalCode, PhoneNumber,OrderItem})
       })
       const res = await response.json()
+    toast.success("Order Created")
+
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +51,6 @@ function Checkout() {
       })
     });
     const data = await response.json();
-
     setsc(data.clientSecret)
   };
   const appearance = {

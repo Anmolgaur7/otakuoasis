@@ -26,9 +26,13 @@ function Login() {
     const { token,user} = res;
     if(token){
       window.localStorage.setItem("token",token)
+      console.log(user.role);
+      if(user.role==="admin"){
+        navigate('/admin/dashboard')
+      }
       window.localStorage.setItem("user",JSON.stringify(user))
     }
-      navigate('/admin/dashboard')
+      navigate('/home')
       toast.success("Login Successfull")
     } catch (error) {
       console.log(error);

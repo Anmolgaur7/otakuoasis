@@ -81,7 +81,7 @@ router.post('/login', async (req, res, _next) => {
                             $set: { token }
                         })
                         user.save()
-                        return res.status(200).json({ user: { name: user.name, email: user.email, id: user.id }, token: token })
+                        return res.status(200).json({ user: { name: user.name, email: user.email, id: user.id,role:user.role}, token: token })
                     })
                 }
             }

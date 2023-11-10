@@ -19,6 +19,10 @@ function Productdetails() {
         const existing=cart.find((item)=>item._id===cartproduct._id)
         if(!existing){
         localStorage.setItem('cart',JSON.stringify([...cart,cartproduct]))
+        console.log(cartproduct);
+        const price=parseInt(cartproduct.Price)
+        console.log(price);
+        localStorage.setItem('total',parseInt(localStorage.getItem('total'))+price)
         toast.success('Item added to cart')
         }
         else{

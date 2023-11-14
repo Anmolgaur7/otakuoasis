@@ -76,11 +76,12 @@ const APP_ROUTES = [
     element: <Analytics/>
   },
 ]
+const token = window.localStorage.getItem("token")||null;
+
 const Protectedroute=({element,isloggedin,...rest})=>{
   return isloggedin ? <Outlet/>:<Navigate to='/login'/>
 }
 function App() {
-  const token = window.localStorage.getItem("token")||null;
   return (
     <>
       <BrowserRouter>
@@ -100,8 +101,10 @@ function App() {
           }
           <Route path='*' element={<Notfound />} />
           <Route path='/' element={<Landing/>} />
+          
           <Route path='/admin' element={<>
-            <Protectedroute isloggedin={token}/>
+          
+           <Protectedroute isloggedin={token}/>
           </>}>
             {
               APP_ROUTES.map(({ path, key, element }) => {

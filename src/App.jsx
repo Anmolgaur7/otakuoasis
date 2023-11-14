@@ -20,7 +20,8 @@ import Analytics from './pages/Analytics'
 import {ToastContainer,toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-
+const user=JSON.parse(window.localStorage.getItem("user"))||null;
+const isadmin= user?.role==="admin"?true:false;
 const ROUTES = [
  
   {
@@ -54,7 +55,8 @@ const ROUTES = [
     element: <Cart />
   },
 ]
-const APP_ROUTES = [
+
+const APP_ROUTES =isadmin?[
   {
     path: "/admin/dashboard",
     key: 'Dash',
@@ -75,7 +77,7 @@ const APP_ROUTES = [
     key: 'Product',
     element: <Analytics/>
   },
-]
+]:[]
 const token = window.localStorage.getItem("token")||null;
 
 const Protectedroute=({element,isloggedin,...rest})=>{
@@ -103,7 +105,6 @@ function App() {
           <Route path='/' element={<Landing/>} />
           
           <Route path='/admin' element={<>
-          
            <Protectedroute isloggedin={token}/>
           </>}>
             {

@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function Applayout({children}) {
+    useEffect(() => {
+        if(!localStorage.getItem("token")){
+            window.location.href("/login")
+          }
+    },[])             
   return (
    <>
    <div className='flex'>

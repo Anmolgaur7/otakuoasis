@@ -34,6 +34,9 @@ function Dashboard() {
     }
   }
   useEffect(() => {
+    if(!localStorage.getItem("token")){
+      window.location.href("/login")
+    }
     handleorder()
   }, [])
   return (

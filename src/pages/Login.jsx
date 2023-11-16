@@ -42,7 +42,7 @@ function Login() {
     const token = window.localStorage.getItem("token")
     if (token) {
       // navigate('/admin/dashboard')
-      window.location.href='/admin/dashboard'
+      window.location.href='/home'
     }
   }, [])
   return (

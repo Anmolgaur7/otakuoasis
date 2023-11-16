@@ -1,13 +1,15 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Goku from "../images/luffy.png";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
-import {ToastContainer,toast} from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Productcard from "../components/Productcard";
 import Banner from '../components/Banner';
 import { fetchrequest } from '../utils';
+import { useNavigate } from 'react-router-dom';
 function Home() {
+  const navigate = useNavigate()
   useEffect(() => {
     document.title = "Home | OtakuOasis";
   }, []);
@@ -16,19 +18,22 @@ function Home() {
   const [error, setError] = useState(false)
 
   useEffect(() => {
-      setLoading(true)
-      const fetchproducts = async () => {
-          const prod=await fetchrequest("products/all","GET")
-          console.log( prod);
-          if(prod.error){
-              setError(true)
-          }
-          else{
-              setProduct(prod)
-          }
+    if (!localStorage.getItem("token")) {
+      navigate('/login')
+    }
+    setLoading(true)
+    const fetchproducts = async () => {
+      const prod = await fetchrequest("products/all", "GET")
+      console.log(prod);
+      if (prod.error) {
+        setError(true)
       }
-      fetchproducts()
-      setLoading(false)
+      else {
+        setProduct(prod)
+      }
+    }
+    fetchproducts()
+    setLoading(false)
   }, [])
 
   if (loading) {
@@ -38,10 +43,10 @@ function Home() {
       </div>
     )
   }
-  
+
   return (
     <>
-    <ToastContainer/>
+      <ToastContainer />
       <div className='h-screen flex justify-center items-center '>
         <h1 className='text-11xl text-center mb-24  font-bold absolute text-blue-800 '>Hello&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Senpai!</h1>
         <img src={Goku} className='h-[80%]  relative right-28' />
@@ -51,16 +56,16 @@ function Home() {
         <div className='flex m-2 overflow-y-scroll'>
           {
             loading ?
-            <div className='animate-pulse flex flex-col space-y-10'>
-            Loading
-            </div>:error?<h1 className='text-2xl text-center font-semibold'>Error</h1>:
-           Products.map((product) => {
-              return (
-                <Fade triggerOnce>
-                  <Productcard image={product.image} id={`${product._id}`} link={product.link} name={product.name} desc={product.description} price={product.Price} />
-                </Fade>
-              )
-            })
+              <div className='animate-pulse flex flex-col space-y-10'>
+                Loading
+              </div> : error ? <h1 className='text-2xl text-center font-semibold'>Error</h1> :
+                Products.map((product) => {
+                  return (
+                    <Fade triggerOnce>
+                      <Productcard image={product.image} id={`${product._id}`} link={product.link} name={product.name} desc={product.description} price={product.Price} />
+                    </Fade>
+                  )
+                })
           }
         </div>
       </div>

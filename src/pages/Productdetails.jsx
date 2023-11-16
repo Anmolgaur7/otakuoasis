@@ -1,31 +1,31 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Relatedproducts from '../components/Relatedproducts'
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchrequest } from '../utils';
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import Productcard from '../components/Productcard';
 
 function Productdetails() {
     const { id } = useParams()
     const navigate = useNavigate()
-    const user=JSON.parse(localStorage.getItem('user'))||{}
+    const user = JSON.parse(localStorage.getItem('user')) || {}
 
     const cartadd = () => {
-        const cartproduct={
+        const cartproduct = {
             ...Product
         }
         console.log(cartproduct);
-        const cart=JSON.parse(localStorage.getItem('cart'))||[]
-        const existing=cart.find((item)=>item._id===cartproduct._id)
-        if(!existing){
-        localStorage.setItem('cart',JSON.stringify([...cart,cartproduct]))
-        console.log(cartproduct);
-        const price=parseInt(cartproduct.Price)
-        console.log(price);
-        localStorage.setItem('total',parseInt(localStorage.getItem('total'))+price)
-        toast.success('Item added to cart')
+        const cart = JSON.parse(localStorage.getItem('cart')) || []
+        const existing = cart.find((item) => item._id === cartproduct._id)
+        if (!existing) {
+            localStorage.setItem('cart', JSON.stringify([...cart, cartproduct]))
+            console.log(cartproduct);
+            const price = parseInt(cartproduct.Price)
+            console.log(price);
+            localStorage.setItem('total', parseInt(localStorage.getItem('total')) + price)
+            toast.success('Item added to cart')
         }
-        else{
+        else {
             toast.error('Item already in cart')
         }
         // navigate('/cart')
@@ -37,6 +37,9 @@ function Productdetails() {
     const [error, setError] = useState(false)
 
     useEffect(() => {
+        if (!localStorage.getItem("token")) {
+        navigate('/login')
+        }
         setLoading(true)
         const fetchproducts = async () => {
             const prod = await fetchrequest(`products/${id}`, "GET")
@@ -145,17 +148,17 @@ function Productdetails() {
                 </div>
             </section>
             <div>
-            <h1 className='text-2xl font-semibold m-4' >Related Products</h1>
-            <div className='flex'>
-            {
-                Relatedproduct.map((product) => {
-                    return (
-                    <Productcard id={`${product._id}`} link={product.link} name={product.name} desc={product.desc} price={product.price} />
-                    )
-                })
-            }
+                <h1 className='text-2xl font-semibold m-4' >Related Products</h1>
+                <div className='flex'>
+                    {
+                        Relatedproduct.map((product) => {
+                            return (
+                                <Productcard id={`${product._id}`} link={product.link} name={product.name} desc={product.desc} price={product.price} />
+                            )
+                        })
+                    }
+                </div>
             </div>
-        </div>
         </>
     )
 }

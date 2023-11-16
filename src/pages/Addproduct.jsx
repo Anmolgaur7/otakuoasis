@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 
 function Addproduct() {
   const [data, setdata] = useState({
@@ -59,7 +59,12 @@ function Addproduct() {
       alert('Product Added')
     } 
   }
-
+  useEffect(() => {
+    if(!localStorage.getItem("token")){
+      window.location.href("/login")
+    }
+    // handleorder()
+  }, [])
   return (
     <div>
       <form className='w-full h-screen flex  flex-col justify-center items-center p-14 text-xl font-mono bg-slate-100' onSubmit={handlesubmit} >

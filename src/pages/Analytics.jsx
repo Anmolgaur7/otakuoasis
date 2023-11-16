@@ -72,6 +72,9 @@ function Analytics() {
         setcustomers(customers.length)
     }
     useEffect(() => {
+        if(!localStorage.getItem("token")){
+            window.location.href("/login")
+          }
         handleorder();
         handleproducts();
         calc()

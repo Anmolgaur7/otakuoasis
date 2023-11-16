@@ -2,14 +2,18 @@ import React,{useState,useEffect} from 'react'
 import Productcard from '../components/Productcard'
 import { Link } from 'react-router-dom'
 import { fetchrequest } from '../utils';
+import { useNavigate } from 'react-router-dom';
 
 
 function Products( ) {
   const [Products, setProduct] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
-
+  const navigate=useNavigate()
   useEffect(() => {
+      if(!localStorage.getItem("token")){
+          navigate('/login')
+        }
       setLoading(true)
       const fetchproducts = async () => {
           const prod=await fetchrequest("products/all?","GET")

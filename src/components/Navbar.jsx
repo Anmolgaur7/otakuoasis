@@ -22,7 +22,7 @@ const [visible, setvisible] = useState("hidden")
                     </svg>
                     </Link>
                     <h1 className='font-bold ml-5 hover:text-white'>Profile </h1>
-                    <div className='bg-white pb-10 hidden'>
+                    <div className={`bg-white pb-10 ${visible}`}>
                     <h1 className='m-2 font-semibold'>Profile</h1>
                     <h1 className='m-2 font-semibold'>Orders</h1>
                     <h1 className='m-2 font-semibold'>Wishlist</h1>

@@ -19,6 +19,7 @@ import Landing from './pages/Landing'
 import Analytics from './pages/Analytics'
 import {ToastContainer,toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Userorders from './pages/Userorders'
 
 const user=JSON.parse(window.localStorage.getItem("user"))||null;
 const isadmin= user?.role==="admin"?true:false;
@@ -54,6 +55,11 @@ const ROUTES = [
     key: 'CART',
     element: <Cart />
   },
+  {
+    path: '/orders',
+    key: 'ORDERS',
+    element: <Userorders/>
+  }
 ]
 
 const APP_ROUTES =isadmin?[

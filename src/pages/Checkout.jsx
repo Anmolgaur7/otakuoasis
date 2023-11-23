@@ -15,6 +15,7 @@ function Checkout() {
     Name: "",
     Email: "",
     Address: "",
+    Us
     City: "",
     Country: "",
     Postalcode: "",
@@ -30,7 +31,7 @@ function Checkout() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ Name, Email, Address, City, Country, PostalCode, PhoneNumber,OrderItem})
+        body: JSON.stringify({ Name, Email, Address,Userid, City, Country, PostalCode, PhoneNumber,OrderItem})
       })
       const res = await response.json()
     toast.success("Order Created")

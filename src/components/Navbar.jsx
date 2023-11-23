@@ -29,7 +29,7 @@ function Navbar() {
                         else
                             setvisible('visible')
                     }
-                    }> <img src={user} alt="user icon" className='w-10 rounded-full'/> </h1>
+                    }> <img src={user} alt="user icon" className='w-10 rounded-full'/></h1>
                     <div className={`bg-white ${visible}`}>
                         <h1 className='m-2 font-semibold  cursor-pointer p-1 hover:bg-yellow-100'>Profile</h1>
                         <h1 className='m-2 font-semibold cursor-pointer p-1 hover:bg-yellow-100'>Orders</h1>

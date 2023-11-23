@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Logo from "../images/oa.jpg";
+import user from "../images/user.png";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -21,19 +22,19 @@ function Navbar() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                         </svg>
                     </Link>
-                    <h1 className='font-bold ml-5 hover:text-white' onClick={() => {
+                    <h1 className='font-bold ml-5 hover:text-white cursor-pointer mr-2' onClick={() => {
                         if (visible == 'visible') {
                             setvisible('hidden')
                         }
                         else
                             setvisible('visible')
                     }
-                    }>Profile </h1>
-                    <div className={`bg-white pb-10 ${visible}`}>
-                        <h1 className='m-2 font-semibold'>Profile</h1>
-                        <h1 className='m-2 font-semibold'>Orders</h1>
-                        <h1 className='m-2 font-semibold'>Wishlist</h1>
-                        <h1 className='m-2 font-semibold'>OtakuCash</h1>
+                    }> <img src={user} alt="user icon" className='w-10 rounded-full'/> </h1>
+                    <div className={`bg-white ${visible}`}>
+                        <h1 className='m-2 font-semibold  cursor-pointer p-1 hover:bg-yellow-100'>Profile</h1>
+                        <h1 className='m-2 font-semibold cursor-pointer p-1 hover:bg-yellow-100'>Orders</h1>
+                        <h1 className='m-2 font-semibold cursor-pointer p-1 hover:bg-yellow-100'>Wishlist</h1>
+                        <h1 className='m-2 font-semibold cursor-pointer p-1 hover:bg-yellow-100'>OtakuCash</h1>
                     </div>
                 </div>
             </nav>

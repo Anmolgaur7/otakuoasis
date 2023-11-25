@@ -14,7 +14,6 @@ function Cart() {
         setcart(cart)
     },[])
     const handleremove=(productid)=>{
-
         const cart=JSON.parse(localStorage.getItem('cart'))||[]
         const newcart=cart.filter((item)=>item._id!==productid)
         localStorage.setItem('cart',JSON.stringify(newcart))

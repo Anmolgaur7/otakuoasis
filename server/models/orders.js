@@ -14,10 +14,6 @@ const Orderschema = moongose.Schema({
         required: true
         
     },
-    Userid: {
-        type: String,
-        required: true, 
-    },
     City: {
         type: String,
         required: true, 

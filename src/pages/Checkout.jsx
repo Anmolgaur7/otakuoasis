@@ -10,10 +10,12 @@ const stripepromise = loadStripe("pk_test_51O7ctDSHY56XZU6lLSpO2HWofdo1xdXFmcoeR
 
 
 function Checkout() {
+  const id=JSON.parse(localStorage.getItem("user")).id
   const [clientSecret, setsc] = useState(null)
   const cart = JSON.parse(localStorage.getItem("cart"))
   const [order, setorder] = useState({
     Name: "",
+    id:id,
     Email: "",
     Address: "",
     City: "",
@@ -25,13 +27,13 @@ function Checkout() {
   const placeorder = async (e) => {
     try {
       e.preventDefault()
-      const { Name, Email, Address, City, Country, PostalCode, PhoneNumber,OrderItem } = order 
+      const { Name,id, Email, Address, City, Country, PostalCode, PhoneNumber,OrderItem } = order 
       const response = await fetch("http://localhost:8000/api/orders/new", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ Name, Email, Address, City, Country, PostalCode, PhoneNumber,OrderItem})
+        body: JSON.stringify({ Name,id,Email, Address, City, Country, PostalCode, PhoneNumber,OrderItem})
       })
       const res = await response.json()
     toast.success("Order Created")

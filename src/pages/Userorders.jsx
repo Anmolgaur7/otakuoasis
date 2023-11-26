@@ -19,7 +19,23 @@ function Userorders() {
   }, [])
   return (
     <div>
-      
+      <h1 className='text-center font-semibold '>Your Orders</h1>
+      {orders.map((order)=>{
+        return(
+          <div className='border-2 border-gray-400 rounded-lg p-4 my-4 m-4'>
+            <h1 className='font-semibold ml-1'>Order Id: {order._id}</h1>
+            {order.OrderItem.map((item)=>{
+              return(
+                <div className='border-2 border-gray-400 rounded-lg p-4 my-4'>
+                  <h1 className='font-semibold'>Product Name: {item.name}</h1>
+                  <h1 className='font-semibold'>Product Price: {item.Price}</h1>
+                  <h1 className='font-semibold'>Product Quantity: {item.quantity}</h1>
+                </div>
+              )
+            })}
+          </div>
+        )     
+      })}
     </div>
   )
 }

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
     const [visible, setvisible] = useState("hidden")
+    const logout
 
     return (
         <>
@@ -30,11 +31,12 @@ function Navbar() {
                             setvisible('visible')
                     }
                     }> <img src={user} alt="user icon" className='w-10 rounded-full'/></h1>
-                    <div className={`bg-white ${visible}`}>
-                        <h1 className='m-2 font-semibold  cursor-pointer p-1 hover:bg-yellow-100'>Profile</h1>
-                        <h1 className='m-2 font-semibold cursor-pointer p-1 hover:bg-yellow-100'>Orders</h1>
-                        <h1 className='m-2 font-semibold cursor-pointer p-1 hover:bg-yellow-100'>Wishlist</h1>
-                        <h1 className='m-2 font-semibold cursor-pointer p-1 hover:bg-yellow-100'>OtakuCash</h1>
+                    <div className={`bg-white ${visible} pl-1 pr-1`}>
+                        <h1 className='m-[0.50.rem]  font-semibold  cursor-pointer p-1 hover:bg-yellow-100'>Profile</h1>
+                        <h1 className='m-[0.50.rem]  font-semibold cursor-pointer p-1 hover:bg-yellow-100'><a href='/orders'>Orders</a></h1>
+                        <h1 className='m-[0.50.rem]  font-semibold cursor-pointer p-1 hover:bg-yellow-100'>Wishlist</h1>
+                        <h1 className='m-[0.50.rem]  font-semibold cursor-pointer p-1 hover:bg-yellow-100'>OtakuCash</h1>
+                        <h1 className='m-[0.50.rem]  font-semibold cursor-pointer p-1 hover:bg-yellow-100'>LogOut</h1>
                     </div>
                 </div>
             </nav>

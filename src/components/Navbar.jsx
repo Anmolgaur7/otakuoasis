@@ -2,13 +2,24 @@ import React, { useState } from 'react'
 import Logo from "../images/oa.jpg";
 import user from "../images/user.png";
 import { Link } from "react-router-dom";
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 function Navbar() {
     const [visible, setvisible] = useState("hidden")
-    const logout
+    const logout=()=>{
+        localStorage.removeItem('user')
+        localStorage.removeItem('cart')
+        localStorage.removeItem('total')
+        localStorage.removeItem('token')
+        toast.success('Logged Out Successfully')
+        window.location.href='/login'
+    }
 
     return (
         <>
+        <ToastContainer/>
             <h1 className='h-2rem text-center bg-black p-2 text-white font-semibold'> <marquee className='w-[25rem]' direction="right">Free Shipping  on all orders above ₨499</marquee></h1>
             <nav className="flex  justify-around items-center  p-2 bg-red-100 mb-5">
                 <ul className='flex items-center'>
@@ -36,7 +47,7 @@ function Navbar() {
                         <h1 className='m-[0.50.rem]  font-semibold cursor-pointer p-1 hover:bg-yellow-100'><a href='/orders'>Orders</a></h1>
                         <h1 className='m-[0.50.rem]  font-semibold cursor-pointer p-1 hover:bg-yellow-100'>Wishlist</h1>
                         <h1 className='m-[0.50.rem]  font-semibold cursor-pointer p-1 hover:bg-yellow-100'>OtakuCash</h1>
-                        <h1 className='m-[0.50.rem]  font-semibold cursor-pointer p-1 hover:bg-yellow-100'>LogOut</h1>
+                        <h1 className='m-[0.50.rem]  font-semibold cursor-pointer p-1 hover:bg-yellow-100 ' onClick={()=>{logout()}}>LogOut</h1>
                     </div>
                 </div>
             </nav>

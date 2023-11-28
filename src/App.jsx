@@ -20,6 +20,7 @@ import Analytics from './pages/Analytics'
 import {ToastContainer,toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Userorders from './pages/Userorders'
+import Register from './pages/Register'
 
 const user=JSON.parse(window.localStorage.getItem("user"))||null;
 const isadmin= user?.role==="admin"?true:false;
@@ -29,6 +30,11 @@ const ROUTES = [
     path: '/home',
     key: 'ROOT',
     element: <Home />
+  },
+  {
+    path: '/register',
+    key: 'REGISTER',
+    element: <Register/>
   },
   {
     path: '/login',

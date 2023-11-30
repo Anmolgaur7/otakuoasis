@@ -37,7 +37,6 @@ function Checkout() {
       })
       const res = await response.json()
     toast.success("Order Created")
-
     } catch (error) {
       console.log(error);
     }
